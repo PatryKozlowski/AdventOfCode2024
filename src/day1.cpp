@@ -8,7 +8,8 @@
 #include "helpers.hpp"
 
 template <typename T, typename N>
-void readFileIntoContainers(const std::string& path, T& leftSide, N& rightSide) {
+void readFileIntoContainers(const std::string& path, T& leftSide, N& rightSide)
+{
     std::fstream day1Input(path);
 
     if (!day1Input.is_open())
@@ -18,7 +19,8 @@ void readFileIntoContainers(const std::string& path, T& leftSide, N& rightSide) 
 
     std::string line;
 
-    while (std::getline(day1Input, line)) {
+    while (std::getline(day1Input, line))
+    {
         std::istringstream lineStream(line);
 
         int leftValue = -1;
@@ -40,7 +42,8 @@ int calculateTotalDistance(T& leftInput, N& rightInput)
 
     int totalDistance = 0;
 
-    for (size_t i = 0; i < leftInput.size(); ++i) {
+    for (size_t i = 0; i < leftInput.size(); ++i)
+    {
         totalDistance += std::abs(leftInput[i] - rightInput[i]);
     }
     return totalDistance;
@@ -50,12 +53,14 @@ template <typename T, typename N>
 int calculateSimilarityScore(const T& left, const N& right) {
     std::unordered_map<int, int> rightCount;
 
-    for (int num : right) {
+    for (int num : right)
+    {
         rightCount[num]++;
     }
 
     int similarityScore = 0;
-    for (int num : left) {
+    for (int num : left)
+    {
         similarityScore += num * rightCount[num];
     }
 
